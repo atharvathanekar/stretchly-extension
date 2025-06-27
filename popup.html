@@ -17,6 +17,52 @@
       padding: var(--space-xl) var(--space-lg);
     }
     
+    .progress-section {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .progress-ring {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .progress-ring svg {
+      transform: rotate(-90deg);
+    }
+    
+    .progress-ring-bg {
+      fill: none;
+      stroke: var(--neutral-200);
+      stroke-width: 8;
+    }
+    
+    .progress-ring-fill {
+      fill: none;
+      stroke: var(--primary-sage);
+      stroke-width: 8;
+      transition: stroke-dashoffset 0.3s ease;
+    }
+    
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    
+    .progress-number {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      color: var(--neutral-800);
+    }
+    
+    .progress-label {
+      font-size: var(--font-size-sm);
+      color: var(--neutral-500);
+    }
+    
     .next-stretch-card {
       background: var(--primary-sky);
       border-radius: var(--radius-lg);
@@ -59,6 +105,17 @@
 </head>
 <body>
   <div class="popup-container">
+    <!-- Debug Icon -->
+    <div style="position: absolute; top: var(--space-sm); right: var(--space-sm);">
+      <button id="debugBtn" style="background: none; border: none; cursor: pointer; padding: 4px; opacity: 0.6; transition: opacity 0.2s; border-radius: 50%;" title="Debug Info" onmouseover="this.style.opacity='1'; this.style.backgroundColor='var(--neutral-200)'" onmouseout="this.style.opacity='0.6'; this.style.backgroundColor='transparent'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </button>
+    </div>
+    
     <!-- Progress Section -->
     <div class="progress-section">
       <div class="progress-ring">
@@ -87,14 +144,9 @@
     </button>
     
     <!-- Test Notification Button -->
-    <button class="btn btn-secondary" style="width: 100%; margin-top: var(--space-md);" id="testNotificationBtn">
+    <!-- <button class="btn btn-secondary" style="width: 100%; margin-top: var(--space-md);" id="testNotificationBtn">
       Test Notification
-    </button>
-    
-    <!-- Check Alarm Status -->
-    <button class="btn btn-ghost" style="width: 100%; margin-top: var(--space-sm); font-size: var(--font-size-sm);" id="checkAlarmsBtn">
-      Check Alarm Status
-    </button>
+    </button> -->
     
     <!-- Footer -->
     <div class="popup-footer">

@@ -19,13 +19,34 @@ async function loadSettings() {
     document.getElementById('frequencySlider').value = frequency;
     updateFrequencyDisplay();
     
+    // Set active hours
+    const activeHours = result.userPreferences.activeHours || 'always';
+    document.getElementById('activeHours').value = activeHours;
+    
     // Set focus areas
-    if (result.userPreferences.painPoints) {
+    // First uncheck all
+    document.querySelectorAll('input[name="focus"]').forEach(cb => cb.checked = false);
+    
+    if (result.userPreferences.focusAreas) {
+      result.userPreferences.focusAreas.forEach(area => {
+        const checkbox = document.querySelector(`input[name="focus"][value="${area}"]`);
+        if (checkbox) checkbox.checked = true;
+      });
+    } else if (result.userPreferences.painPoints) {
+      // Fallback for old data format
       result.userPreferences.painPoints.forEach(point => {
         const checkbox = document.querySelector(`input[name="focus"][value="${mapPainPointToFocus(point)}"]`);
         if (checkbox) checkbox.checked = true;
       });
     }
+    
+    // Set sound toggle
+    const soundEnabled = result.userPreferences.soundEnabled !== false; // Default to true
+    document.getElementById('soundToggle').checked = soundEnabled;
+    
+    // Set exercise duration
+    const exerciseDuration = result.userPreferences.exerciseDuration || 'quick';
+    document.getElementById('exerciseDuration').value = exerciseDuration;
   }
   
   // Set master toggle
@@ -53,20 +74,32 @@ function updateFrequencyDisplay() {
 async function saveSettings() {
   // Collect all settings
   const frequency = parseInt(document.getElementById('frequencySlider').value);
+  const activeHours = document.getElementById('activeHours').value;
   const focusAreas = Array.from(document.querySelectorAll('input[name="focus"]:checked'))
     .map(cb => cb.value);
   const soundEnabled = document.getElementById('soundToggle').checked;
+  const exerciseDuration = document.getElementById('exerciseDuration').value;
   
   // Get existing preferences
   const { userPreferences = {} } = await chrome.storage.local.get(['userPreferences']);
   
   // Update preferences
   userPreferences.frequency = frequency;
+  userPreferences.activeHours = activeHours;
   userPreferences.focusAreas = focusAreas;
   userPreferences.soundEnabled = soundEnabled;
+  userPreferences.exerciseDuration = exerciseDuration;
   
-  // Save to storage
-  await chrome.storage.local.set({ userPreferences });
+  // Map exercise duration to breakType for backward compatibility
+  userPreferences.breakType = exerciseDuration;
+  
+  // Mark onboarding as completed if it wasn't already
+  await chrome.storage.local.set({ 
+    userPreferences,
+    onboardingCompleted: true 
+  });
+  
+  console.log('Settings saved:', userPreferences);
   
   // Update alarm
   chrome.runtime.sendMessage({
