@@ -1,0 +1,23 @@
+{
+  "name": "stretchly-extension",
+  "version": "1.0.0",
+  "description": "Personalized stretch reminders for better posture and wellness",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "zip": "node scripts/create-zip.js",
+    "clean": "rm -rf dist build *.zip"
+  },
+  "keywords": [
+    "chrome-extension",
+    "stretching",
+    "wellness",
+    "productivity",
+    "health",
+    "posture"
+  ],
+  "devDependencies": {
+    "archiver": "^5.3.1"
+  }
+}
