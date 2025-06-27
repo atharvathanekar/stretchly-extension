@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Icon Generator</title>
+  <style>
+    canvas { border: 1px solid #ccc; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Stretchly Icon Generator</h1>
+  <p>Right-click and save each icon with the appropriate filename:</p>
+  
+  <canvas id="icon16" width="16" height="16"></canvas> icon-16.png<br>
+  <canvas id="icon32" width="32" height="32"></canvas> icon-32.png<br>
+  <canvas id="icon48" width="48" height="48"></canvas> icon-48.png<br>
+  <canvas id="icon128" width="128" height="128"></canvas> icon-128.png<br>
+  
+  <script>
+    // Generate icons for Stretchly
+    const sizes = [16, 32, 48, 128];
+    
+    sizes.forEach(size => {
+      const canvas = document.getElementById(`icon${size}`);
+      const ctx = canvas.getContext('2d');
+      
+      // Background - soft sage green gradient
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#7FB069');
+      gradient.addColorStop(1, '#6B9B56');
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+      
+      // Draw a simple yoga/stretch icon
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      // Scale emoji based on canvas size
+      const fontSize = size * 0.6;
+      ctx.font = `${fontSize}px Arial`;
+      ctx.fillText('🧘', size/2, size/2);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stretchly</title>
+  <link rel="stylesheet" href="styles/calm-theme.css">
+  <style>
+    body {
+      width: 320px;
+      min-height: 400px;
+      margin: 0;
+      background: var(--neutral-50);
+    }
+    
+    .popup-container {
+      padding: var(--space-xl) var(--space-lg);
+    }
+    
+    .next-stretch-card {
+      background: var(--primary-sky);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      margin-top: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      text-align: center;
+    }
+    
+    .next-stretch-label {
+      font-size: var(--font-size-xs);
+      color: var(--neutral-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-xs);
+    }
+    
+    .next-stretch-name {
+      font-size: var(--font-size-lg);
+      font-weight: 500;
+      color: var(--neutral-800);
+    }
+    
+    .popup-footer {
+      margin-top: var(--space-2xl);
+      text-align: center;
+    }
+    
+    .settings-link {
+      color: var(--neutral-500);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+      transition: color var(--transition-base);
+    }
+    
+    .settings-link:hover {
+      color: var(--primary-sage);
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Progress Section -->
+    <div class="progress-section">
+      <div class="progress-ring">
+        <svg width="120" height="120">
+          <circle class="progress-ring-bg" cx="60" cy="60" r="52"></circle>
+          <circle class="progress-ring-fill" cx="60" cy="60" r="52" 
+                  stroke-dasharray="326.73" 
+                  stroke-dashoffset="82"></circle>
+        </svg>
+        <div class="progress-text">
+          <div class="progress-number">5</div>
+          <div class="progress-label">stretches</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Next Stretch Preview -->
+    <div class="next-stretch-card">
+      <div class="next-stretch-label">Next up</div>
+      <div class="next-stretch-name">Neck Rolls</div>
+    </div>
+    
+    <!-- Primary Action -->
+    <button class="btn btn-primary" style="width: 100%;" id="startNowBtn">
+      Start a stretch now
+    </button>
+    
+    <!-- Test Notification Button -->
+    <button class="btn btn-secondary" style="width: 100%; margin-top: var(--space-md);" id="testNotificationBtn">
+      Test Notification
+    </button>
+    
+    <!-- Check Alarm Status -->
+    <button class="btn btn-ghost" style="width: 100%; margin-top: var(--space-sm); font-size: var(--font-size-sm);" id="checkAlarmsBtn">
+      Check Alarm Status
+    </button>
+    
+    <!-- Footer -->
+    <div class="popup-footer">
+      <a href="#" class="settings-link" id="settingsLink">Settings</a>
+    </div>
+  </div>
+  
+  <script src="scripts/popup.js"></script>
+</body>
+</html>

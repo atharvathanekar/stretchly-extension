@@ -1,7 +1,7 @@
 
 Part 1: Modified Product Requirements Document (PRD).
 1. Introduction & Problem Statement
-Professionals and hobbyists who spend extended hours at a desk... are at high risk for developing chronic physical ailments... StretchCue is a lightweight browser extension that seamlessly integrates into the user's day, providing gentle, timely, and actionable prompts to stretch and move.
+Professionals and hobbyists who spend extended hours at a desk... are at high risk for developing chronic physical ailments... Stretchly is a lightweight browser extension that seamlessly integrates into the user's day, providing gentle, timely, and actionable prompts to stretch and move.
 2. Goals & Objectives
 User Goal: Reduce physical discomfort and improve posture during long screen-time sessions with guidance relevant to my specific pain points.
 Product Goal: Become an indispensable daily utility by delivering personalized, tangible health benefits without disrupting workflow.
@@ -31,7 +31,7 @@ Needs: Quick, effective movements they can do during a loading screen. They woul
 MVP (v1.0) User Flow
 Onboarding Flow:
 User installs extension from Chrome Web Store.
-A new tab opens with a simple "Welcome to StretchCue!" message.
+A new tab opens with a simple "Welcome to Stretchly!" message.
 Message explains the "what" and "how": "We'll nudge you every hour with a simple stretch. Click our icon to adjust settings. Happy stretching!"
 The background timer starts automatically with a generic set of stretches.
 
@@ -43,7 +43,7 @@ Timer resets.
 Post-MVP (v1.1) "Personalized" User Flow
 New Onboarding Flow:
 User installs extension.
-A new tab opens with the "Welcome to StretchCue!" message.
+A new tab opens with the "Welcome to Stretchly!" message.
 A modal appears: "Let's personalize your stretches! Tell us what bothers you most. (This is optional)."
 The user is presented with a clean, multi-select list of concerns (e.g., [ ] Neck & Shoulders, [ ] Lower Back, [ ] Eye Strain, [ ] Wrists & Hands, [ ] General Stiffness).
 User selects their focus areas and clicks "Save," OR they click a "Skip for now" button.
@@ -65,7 +65,7 @@ Competitive Analysis Table
 Updated Differentiators:
 The Path to Hyper-Personalization (Our Key Differentiator):
 Competitors: Most apps are "one-size-fits-all." Stretchly allows users to write their own tips, but this is high-effort. No competitor actively learns about the user's needs to tailor content out of the box.
-StretchCue Differentiator: The Smart Onboarding Questionnaire is our wedge. We will be the only product in this space that asks "Where does it hurt?" and then delivers a solution. This creates an immediate, powerful connection with the user and a high barrier to switching. Our marketing language can shift from "Get stretch reminders" to "Get the right stretches for you, right when you need them."
+Stretchly Differentiator: The Smart Onboarding Questionnaire is our wedge. We will be the only product in this space that asks "Where does it hurt?" and then delivers a solution. This creates an immediate, powerful connection with the user and a high barrier to switching. Our marketing language can shift from "Get stretch reminders" to "Get the right stretches for you, right when you need them."
 A Philosophy of "Gentle Guidance":
 Our UX remains a core differentiator. It will be calming, beautiful, and respectful of the user's workflow, now enhanced with content that feels more relevant and less random.
 Expert-Curated Content, Intelligently Delivered:

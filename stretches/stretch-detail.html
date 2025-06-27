@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stretchly - Exercise Guide</title>
+  <link rel="stylesheet" href="../styles/calm-theme.css">
+  <style>
+    body {
+      background: var(--neutral-50);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .stretch-container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-2xl);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .stretch-header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .stretch-title {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      color: var(--neutral-800);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .stretch-subtitle {
+      font-size: var(--font-size-lg);
+      color: var(--neutral-600);
+    }
+    
+    .animation-container {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      margin: 0 auto var(--space-2xl);
+      background: linear-gradient(135deg, var(--primary-sky) 0%, var(--neutral-100) 100%);
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .animation-placeholder {
+      font-size: 6rem;
+      color: var(--primary-sage);
+      animation: breathe 4s ease-in-out infinite;
+    }
+    
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    
+    .exercise-video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius-lg);
+    }
+    
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+    
+    .placeholder-icon {
+      font-size: 4rem;
+      color: var(--primary-sage);
+      margin-bottom: 1rem;
+    }
+    
+    .placeholder-text {
+      color: var(--neutral-500);
+      font-size: var(--font-size-sm);
+    }
+    
+    .instructions-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .instructions-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: var(--primary-sage);
+      color: white;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+    }
+    
+    .step-list {
+      list-style: none;
+      counter-reset: step-counter;
+    }
+    
+    .step-item {
+      position: relative;
+      padding-left: var(--space-2xl);
+      margin-bottom: var(--space-lg);
+      counter-increment: step-counter;
+    }
+    
+    .step-item::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--neutral-100);
+      color: var(--neutral-600);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+    }
+    
+    .timer-section {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .timer-display {
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--primary-sage);
+      margin-bottom: var(--space-md);
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .timer-controls {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: var(--space-lg);
+      justify-content: center;
+      margin-top: var(--space-2xl);
+      padding-bottom: var(--space-2xl);
+    }
+    
+    .action-buttons .btn {
+      font-size: var(--font-size-base);
+      font-weight: 500;
+    }
+    
+    .action-buttons .btn-primary {
+      padding: var(--space-md) var(--space-2xl);
+    }
+    
+    .action-buttons .btn-ghost {
+      padding: var(--space-md) var(--space-xl);
+    }
+    
+    .tips-section {
+      background: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      margin-top: var(--space-2xl);
+      margin-bottom: var(--space-2xl);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .tips-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--neutral-800);
+    }
+    
+    .tip-icon {
+      font-size: var(--font-size-2xl);
+    }
+    
+    .tips-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .tips-list li {
+      padding-left: var(--space-2xl);
+      margin-bottom: var(--space-md);
+      position: relative;
+      line-height: 1.8;
+      color: var(--neutral-600);
+      font-size: var(--font-size-base);
+    }
+    
+    .tips-list li:last-child {
+      margin-bottom: 0;
+    }
+    
+    .tips-list li::before {
+      content: '•';
+      position: absolute;
+      left: var(--space-md);
+      color: var(--primary-sage);
+      font-weight: bold;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="stretch-container">
+    <!-- Header -->
+    <div class="stretch-header">
+      <h1 class="stretch-title" id="stretchTitle">Neck Rolls</h1>
+      <p class="stretch-subtitle">Gentle movement to release neck tension</p>
+    </div>
+    
+    <!-- Animation -->
+    <div class="animation-container" id="animationContainer">
+      <div class="animation-placeholder">
+        🧘‍♀️
+      </div>
+    </div>
+    
+    <!-- Timer Section -->
+    <div class="timer-section">
+      <div class="timer-display" id="timerDisplay">0:30</div>
+      <div class="timer-controls">
+        <button class="btn btn-secondary" id="startTimer">Start Timer</button>
+        <button class="btn btn-ghost" id="resetTimer">Reset</button>
+      </div>
+    </div>
+    
+    <!-- Instructions -->
+    <div class="instructions-card">
+      <div class="instructions-header">
+        <div class="step-number">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </div>
+        <h2>How to perform this stretch</h2>
+      </div>
+      
+      <ol class="step-list" id="stepsList">
+        <li class="step-item">Sit up straight and relax your shoulders</li>
+        <li class="step-item">Slowly roll your head in a circular motion</li>
+        <li class="step-item">Complete 5 rolls in each direction</li>
+        <li class="step-item">Move slowly and breathe deeply throughout</li>
+      </ol>
+    </div>
+    
+    <!-- Tips -->
+    <div class="tips-section">
+      <div class="tips-header">
+        <span class="tip-icon">💡</span>
+        <h3>Pro tips</h3>
+      </div>
+      <ul class="tips-list">
+        <li>Keep your movements slow and controlled</li>
+        <li>Don't force any movement that causes pain</li>
+        <li>Focus on your breathing - inhale and exhale deeply</li>
+        <li>This exercise can be done seated or standing</li>
+      </ul>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="btn btn-primary" id="completeBtn" style="min-width: 200px;">
+        Mark as Complete
+      </button>
+      <button class="btn btn-ghost" id="skipBtn">
+        Skip this stretch
+      </button>
+    </div>
+  </div>
+  
+  <script src="../scripts/stretch-detail.js"></script>
+</body>
+</html>

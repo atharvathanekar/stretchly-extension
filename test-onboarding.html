@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Onboarding</title>
+</head>
+<body>
+  <h1>Stretchly Extension Test Page</h1>
+  <p>Click the button below to test the onboarding flow:</p>
+  
+  <button onclick="window.open('onboarding.html', '_blank')">
+    Open Onboarding
+  </button>
+  
+  <h2>Debugging Tips:</h2>
+  <ol>
+    <li>Open Chrome Developer Tools (F12)</li>
+    <li>Go to the Console tab</li>
+    <li>Click on checkboxes and the Continue button</li>
+    <li>Look for console messages that show:
+      <ul>
+        <li>"Next step clicked, current step: 1"</li>
+        <li>"Validating step: 1"</li>
+        <li>"Checked reasons: X" (where X is the number of checked boxes)</li>
+      </ul>
+    </li>
+    <li>If you see "Validation failed", make sure at least one checkbox is selected</li>
+  </ol>
+  
+  <h2>Known Issues Fixed:</h2>
+  <ul>
+    <li>✓ Duplicate checkboxes hidden</li>
+    <li>✓ Continue button click handler attached</li>
+    <li>✓ Error messages styled properly</li>
+    <li>✓ Validation logging added</li>
+  </ul>
+</body>
+</html>

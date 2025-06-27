@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stretchly Settings</title>
+  <link rel="stylesheet" href="styles/calm-theme.css">
+  <style>
+    body {
+      background: var(--neutral-50);
+      min-height: 100vh;
+    }
+    
+    .settings-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: var(--space-2xl) var(--space-lg);
+    }
+    
+    .settings-title {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      color: var(--neutral-800);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .master-toggle-card {
+      background: linear-gradient(135deg, var(--primary-sky) 0%, rgba(127, 176, 105, 0.1) 100%);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .master-toggle-content h3 {
+      margin-bottom: var(--space-xs);
+    }
+    
+    .master-toggle-content p {
+      font-size: var(--font-size-sm);
+      color: var(--neutral-600);
+    }
+    
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    
+    .save-button {
+      position: fixed;
+      bottom: var(--space-lg);
+      right: var(--space-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .success-toast {
+      position: fixed;
+      top: var(--space-lg);
+      right: var(--space-lg);
+      background: var(--success);
+      color: white;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-lg);
+      display: none;
+      animation: slideInDown 0.3s ease-out;
+    }
+    
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="settings-container">
+    <h1 class="settings-title">Settings</h1>
+    
+    <!-- Master Toggle -->
+    <div class="master-toggle-card">
+      <div class="master-toggle-content">
+        <h3>Enable Stretchly</h3>
+        <p>Receive gentle reminders to stretch throughout your day</p>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="masterToggle" checked>
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    
+    <!-- Reminder Frequency -->
+    <div class="card settings-section">
+      <div class="settings-header">
+        <h3>Reminder Frequency</h3>
+      </div>
+      
+      <div class="slider-container">
+        <div class="slider-label">
+          <span>Remind me every</span>
+          <span class="text-sage" id="frequencyValue">60 minutes</span>
+        </div>
+        <input type="range" class="slider" id="frequencySlider" 
+               min="1" max="120" step="1" value="60">
+      </div>
+      
+      <div class="setting-row">
+        <div>
+          <div class="text-sm font-medium">Active Hours</div>
+          <div class="text-xs text-muted">When to send reminders</div>
+        </div>
+        <select class="select-field" id="activeHours">
+          <option value="always">Always</option>
+          <option value="work">Work hours (9-5)</option>
+          <option value="custom">Custom schedule</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Exercise Types -->
+    <div class="card settings-section">
+      <div class="settings-header">
+        <h3>Exercise Focus Areas</h3>
+      </div>
+      <p class="text-sm text-muted mb-md">
+        Select the areas you'd like to focus on. We'll personalize your stretches accordingly.
+      </p>
+      
+      <div class="exercise-grid">
+        <label class="checkbox-calm">
+          <input type="checkbox" name="focus" value="neck" checked>
+          <span class="checkbox-icon"></span>
+          <span>Neck & Shoulders</span>
+        </label>
+        
+        <label class="checkbox-calm">
+          <input type="checkbox" name="focus" value="back" checked>
+          <span class="checkbox-icon"></span>
+          <span>Back & Spine</span>
+        </label>
+        
+        <label class="checkbox-calm">
+          <input type="checkbox" name="focus" value="eyes">
+          <span class="checkbox-icon"></span>
+          <span>Eyes & Vision</span>
+        </label>
+        
+        <label class="checkbox-calm">
+          <input type="checkbox" name="focus" value="wrists" checked>
+          <span class="checkbox-icon"></span>
+          <span>Wrists & Hands</span>
+        </label>
+        
+        <label class="checkbox-calm">
+          <input type="checkbox" name="focus" value="legs">
+          <span class="checkbox-icon"></span>
+          <span>Legs & Hips</span>
+        </label>
+        
+        <label class="checkbox-calm">
+          <input type="checkbox" name="focus" value="breathing">
+          <span class="checkbox-icon"></span>
+          <span>Breathing</span>
+        </label>
+      </div>
+    </div>
+    
+    <!-- Additional Settings -->
+    <div class="card settings-section">
+      <div class="settings-header">
+        <h3>Preferences</h3>
+      </div>
+      
+      <div class="setting-row">
+        <div>
+          <div class="text-sm font-medium">Sound notifications</div>
+          <div class="text-xs text-muted">Play a gentle chime</div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="soundToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      
+      <div class="setting-row">
+        <div>
+          <div class="text-sm font-medium">Exercise duration</div>
+          <div class="text-xs text-muted">Preferred stretch length</div>
+        </div>
+        <select class="select-field" id="exerciseDuration">
+          <option value="quick">Quick (< 1 min)</option>
+          <option value="medium">Medium (1-3 min)</option>
+          <option value="long">Long (5+ min)</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Save Button -->
+    <button class="btn btn-primary save-button" id="saveBtn">
+      Save Changes
+    </button>
+    
+    <!-- Success Toast -->
+    <div class="success-toast" id="successToast">
+      Settings saved successfully!
+    </div>
+  </div>
+  
+  <script src="scripts/settings.js"></script>
+</body>
+</html>

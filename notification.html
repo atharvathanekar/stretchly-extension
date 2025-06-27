@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time to Stretch!</title>
+  <link rel="stylesheet" href="styles/calm-theme.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .exercise-animation {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--primary-sky) 0%, var(--neutral-100) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--primary-sage);
+    }
+    
+    .exercise-title {
+      font-size: var(--font-size-xl);
+      font-weight: 500;
+      color: var(--neutral-800);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .exercise-instruction {
+      font-size: var(--font-size-base);
+      color: var(--neutral-600);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .notification-timer {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--neutral-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-xs);
+      color: var(--neutral-500);
+    }
+  </style>
+</head>
+<body>
+  <div class="notification-popup fade-in">
+    <div class="notification-header">
+      <div class="notification-timer">30s</div>
+      <div class="text-sm text-sage">Time for your wellness break</div>
+    </div>
+    
+    <div class="notification-content">
+      <!-- Exercise Preview -->
+      <div class="exercise-preview">
+        <div class="exercise-animation">
+          <!-- Placeholder for animation -->
+          🧘‍♀️
+        </div>
+      </div>
+      
+      <!-- Exercise Details -->
+      <div class="exercise-title">Seated Cat-Cow</div>
+      <div class="exercise-instruction">
+        Round and arch your back slowly, moving between cat and cow positions. Breathe deeply and repeat 5 times.
+      </div>
+      
+      <!-- Actions -->
+      <div class="notification-actions">
+        <button class="btn btn-primary" style="flex: 1;" id="doneBtn">
+          Done
+        </button>
+        <button class="btn btn-secondary" style="flex: 1;" id="skipBtn">
+          Skip for 10 min
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Simple countdown timer
+    let seconds = 30;
+    const timerEl = document.querySelector('.notification-timer');
+    
+    const countdown = setInterval(() => {
+      seconds--;
+      timerEl.textContent = `${seconds}s`;
+      
+      if (seconds <= 0) {
+        clearInterval(countdown);
+        window.close();
+      }
+    }, 1000);
+    
+    // Button handlers
+    document.getElementById('doneBtn').addEventListener('click', () => {
+      chrome.runtime.sendMessage({ type: 'stretchCompleted' });
+      window.close();
+    });
+    
+    document.getElementById('skipBtn').addEventListener('click', () => {
+      chrome.runtime.sendMessage({ type: 'stretchSkipped' });
+      window.close();
+    });
+  </script>
+</body>
+</html>

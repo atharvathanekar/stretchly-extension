@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Stretchly</title>
+  <link rel="stylesheet" href="styles/calm-theme.css">
+  <link rel="stylesheet" href="styles/onboarding.css">
+</head>
+<body>
+  <div class="onboarding-container">
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressBar" style="width: 25%;"></div>
+      </div>
+    </div>
+
+    <!-- Step 1: Welcome & Context -->
+    <div class="onboarding-step active" id="step1">
+      <div class="step-content fade-in">
+        <div class="welcome-header">
+          <h1 class="heading-xl">Welcome to Stretchly</h1>
+          <p class="subtitle">Let's personalize your experience in just a few steps</p>
+        </div>
+        
+        <div class="question-section">
+          <h2 class="heading-lg">What brings you to Stretchly?</h2>
+          <p class="question-subtitle">Select all that apply</p>
+          
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" class="checkbox-input" name="reason" value="desk_work">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">I work at a desk for long hours</span>
+            </label>
+            
+            <label class="checkbox-item">
+              <input type="checkbox" class="checkbox-input" name="reason" value="gaming">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">I spend a lot of time gaming</span>
+            </label>
+            
+            <label class="checkbox-item">
+              <input type="checkbox" class="checkbox-input" name="reason" value="posture">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">I want to improve my posture</span>
+            </label>
+            
+            <label class="checkbox-item">
+              <input type="checkbox" class="checkbox-input" name="reason" value="pain">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">I'm feeling tension or pain in specific areas</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="step-actions">
+          <button class="btn btn-primary btn-next" id="step1Continue">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Work Environment & Hours -->
+    <div class="onboarding-step" id="step2">
+      <div class="step-content">
+        <h2 class="heading-lg">Tell us about your work setup</h2>
+        
+        <div class="question-section">
+          <h3 class="heading-md">What best describes your typical work environment?</h3>
+          
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="environment" value="home">
+              <span class="radio-custom"></span>
+              <span class="radio-label">Desk job at home</span>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="environment" value="office">
+              <span class="radio-custom"></span>
+              <span class="radio-label">Desk job in an office</span>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="environment" value="hybrid">
+              <span class="radio-custom"></span>
+              <span class="radio-label">Hybrid</span>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="environment" value="freelance">
+              <span class="radio-custom"></span>
+              <span class="radio-label">Freelance / flexible setup</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="question-section">
+          <h3 class="heading-md">How many hours a day do you spend sitting at a desk?</h3>
+          
+          <div class="radio-group horizontal">
+            <label class="radio-item compact">
+              <input type="radio" class="radio-input" name="hours" value="less_4">
+              <span class="radio-custom"></span>
+              <span class="radio-label">Less than 4</span>
+            </label>
+            
+            <label class="radio-item compact">
+              <input type="radio" class="radio-input" name="hours" value="4_6">
+              <span class="radio-custom"></span>
+              <span class="radio-label">4-6</span>
+            </label>
+            
+            <label class="radio-item compact">
+              <input type="radio" class="radio-input" name="hours" value="6_8">
+              <span class="radio-custom"></span>
+              <span class="radio-label">6-8</span>
+            </label>
+            
+            <label class="radio-item compact">
+              <input type="radio" class="radio-input" name="hours" value="8_plus">
+              <span class="radio-custom"></span>
+              <span class="radio-label">8+</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="step-actions">
+          <button class="btn btn-ghost" id="step2Back">Back</button>
+          <button class="btn btn-primary btn-next" id="step2Continue">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Pain Points & Schedule -->
+    <div class="onboarding-step" id="step3">
+      <div class="step-content">
+        <h2 class="heading-lg">Let's focus on your needs</h2>
+        
+        <div class="question-section">
+          <h3 class="heading-md">Which of the following do you experience regularly?</h3>
+          <p class="question-subtitle">Select all that apply</p>
+          
+          <div class="checkbox-group two-column">
+            <label class="checkbox-item icon-item">
+              <input type="checkbox" class="checkbox-input" name="pain_point" value="neck_shoulders">
+              <span class="checkbox-custom"></span>
+              <div class="icon-label">
+                <span class="icon">🎯</span>
+                <span class="checkbox-label">Stiff neck or shoulders</span>
+              </div>
+            </label>
+            
+            <label class="checkbox-item icon-item">
+              <input type="checkbox" class="checkbox-input" name="pain_point" value="back">
+              <span class="checkbox-custom"></span>
+              <div class="icon-label">
+                <span class="icon">🎯</span>
+                <span class="checkbox-label">Lower back pain</span>
+              </div>
+            </label>
+            
+            <label class="checkbox-item icon-item">
+              <input type="checkbox" class="checkbox-input" name="pain_point" value="wrist_hand">
+              <span class="checkbox-custom"></span>
+              <div class="icon-label">
+                <span class="icon">✋</span>
+                <span class="checkbox-label">Wrist or hand tension</span>
+              </div>
+            </label>
+            
+            <label class="checkbox-item icon-item">
+              <input type="checkbox" class="checkbox-input" name="pain_point" value="eyes">
+              <span class="checkbox-custom"></span>
+              <div class="icon-label">
+                <span class="icon">👁️</span>
+                <span class="checkbox-label">Eye strain</span>
+              </div>
+            </label>
+            
+            <label class="checkbox-item icon-item">
+              <input type="checkbox" class="checkbox-input" name="pain_point" value="posture">
+              <span class="checkbox-custom"></span>
+              <div class="icon-label">
+                <span class="icon">🧍</span>
+                <span class="checkbox-label">Poor posture / slouching</span>
+              </div>
+            </label>
+            
+            <label class="checkbox-item icon-item">
+              <input type="checkbox" class="checkbox-input" name="pain_point" value="none">
+              <span class="checkbox-custom"></span>
+              <div class="icon-label">
+                <span class="icon">✨</span>
+                <span class="checkbox-label">None of the above</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <div class="step-actions">
+          <button class="btn btn-ghost" id="step3Back">Back</button>
+          <button class="btn btn-primary btn-next" id="step3Continue">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Timing Preferences -->
+    <div class="onboarding-step" id="step4">
+      <div class="step-content">
+        <h2 class="heading-lg">Set your schedule</h2>
+        
+        <div class="question-section">
+          <h3 class="heading-md">How often would you like to be reminded?</h3>
+          
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="frequency" value="30">
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Every 30 minutes</span>
+                <span class="radio-description">Frequent reminders for intense work sessions</span>
+              </div>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="frequency" value="45">
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Every 45 minutes</span>
+                <span class="radio-description">Good for addressing multiple pain points</span>
+              </div>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="frequency" value="60" checked>
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Every hour</span>
+                <span class="radio-description">Recommended for most users</span>
+              </div>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="frequency" value="90">
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Every 90 minutes</span>
+                <span class="radio-description">Balanced approach for moderate activity</span>
+              </div>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="frequency" value="120">
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Every 2 hours</span>
+                <span class="radio-description">For less frequent breaks</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <div class="question-section">
+          <h3 class="heading-md">What kind of breaks do you prefer?</h3>
+          
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="break_type" value="quick" checked>
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Quick stretches</span>
+                <span class="radio-description">Under 1 minute</span>
+              </div>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="break_type" value="medium">
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Medium breaks</span>
+                <span class="radio-description">1-3 minutes</span>
+              </div>
+            </label>
+            
+            <label class="radio-item">
+              <input type="radio" class="radio-input" name="break_type" value="long">
+              <span class="radio-custom"></span>
+              <div class="radio-content">
+                <span class="radio-label">Wellness breaks</span>
+                <span class="radio-description">5-10 minutes</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <div class="step-actions">
+          <button class="btn btn-ghost" id="step4Back">Back</button>
+          <button class="btn btn-success" id="step4Complete">Start Stretching!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/onboarding.js"></script>
+</body>
+</html>
