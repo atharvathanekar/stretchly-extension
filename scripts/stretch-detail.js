@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event listeners
   document.getElementById('startTimer').addEventListener('click', handleTimerClick);
   document.getElementById('resetTimer').addEventListener('click', resetTimer);
+  document.getElementById('nextStretch').addEventListener('click', loadNextStretch);
   document.getElementById('completeBtn').addEventListener('click', completeStretch);
   document.getElementById('skipBtn').addEventListener('click', skipStretch);
 });
@@ -272,6 +273,35 @@ function loadStretchData(stretchId) {
   tipsList.innerHTML = stretch.tips.map(tip => 
     `<li>${tip}</li>`
   ).join('');
+  
+  // Reset timer if it's running
+  if (timerInterval) {
+    resetTimer();
+  }
+}
+
+async function loadNextStretch() {
+  // Get all stretch IDs
+  const allStretchIds = Object.keys(stretchData);
+  
+  // Get current stretch ID
+  const currentId = getStretchId();
+  const currentIndex = allStretchIds.indexOf(currentId);
+  
+  // Get next stretch ID (loop back to first if at end)
+  const nextIndex = (currentIndex + 1) % allStretchIds.length;
+  const nextStretchId = allStretchIds[nextIndex];
+  
+  // Check if we should get a personalized stretch instead
+  const response = await chrome.runtime.sendMessage({ type: 'getNextStretch' });
+  
+  if (response && response.stretch && response.stretch.id) {
+    // Use personalized stretch if available
+    window.location.search = `?id=${response.stretch.id}`;
+  } else {
+    // Fall back to cycling through stretches
+    window.location.search = `?id=${nextStretchId}`;
+  }
 }
 
 function handleTimerClick() {

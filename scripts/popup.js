@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Event listeners
   document.getElementById('startNowBtn').addEventListener('click', startStretchNow);
   document.getElementById('settingsLink').addEventListener('click', openSettings);
-  // document.getElementById('testNotificationBtn').addEventListener('click', testNotification);
+  document.getElementById('testNotificationBtn').addEventListener('click', testNotification);
   document.getElementById('debugBtn').addEventListener('click', showDebugInfo);
 });
 
